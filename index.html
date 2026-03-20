@@ -1850,7 +1850,7 @@
     <!-- ROV 2025 -->
     <div class="comp-card" onclick="showPage('rov')">
       <div class="comp-img">
-        <img src="images/rov1.jpg" alt="MATE ROV Egypt 2025" />
+        <img src="images/Rov1.jpg" alt="MATE ROV Egypt 2025" />
         <div class="comp-img-overlay"></div>
         <div class="comp-badge">2024 – 2025</div>
       </div>
@@ -1872,7 +1872,7 @@
     <!-- Robotex 2025 -->
     <div class="comp-card" onclick="showPage('robotex')">
       <div class="comp-img">
-        <img src="images/r2.jpg" alt="Robotex Egypt 2025" />
+        <img src="images/R2.jpg" alt="Robotex Egypt 2025" />
         <div class="comp-img-overlay"></div>
         <div class="comp-badge award">🥉 3rd Place</div>
       </div>
@@ -1952,7 +1952,7 @@
     <div class="detail-nav-right"><span class="mtr-pill">Mind Tech Robotics</span></div>
   </div>
   <div class="detail-hero">
-    <img src="images/rov1.jpg" alt="ROV Team" class="detail-hero-img" />
+    <img src="images/Rov1.jpg" alt="ROV Team" class="detail-hero-img" />
     <div class="detail-hero-overlay"></div>
     <div class="detail-hero-content">
       <div class="detail-tag">Underwater Robotics · 2024 – 2025</div>
@@ -1982,11 +1982,11 @@
       <div class="detail-section-title">// Gallery</div>
       <div class="gallery">
         <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
-          <img src="images/rov1.jpg" alt="MTR Team at MATE ROV Egypt" />
+          <img src="images/Rov1.jpg" alt="MTR Team at MATE ROV Egypt" />
           <div class="gallery-caption">MTR team at the 13th MATE ROV Egypt Competition</div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/rov2.jpg" alt="ROV Vehicle" />
+          <img src="images/Rov2.jpg" alt="ROV Vehicle" />
           <div class="gallery-caption">The ROV vehicle — electrical systems I worked on</div>
         </div>
       </div>
@@ -2003,7 +2003,7 @@
     </div>
   </div>
   <div class="detail-hero">
-    <img src="images/r2.jpg" alt="Robotex 3rd Place" class="detail-hero-img" />
+    <img src="images/R2.jpg" alt="Robotex 3rd Place" class="detail-hero-img" />
     <div class="detail-hero-overlay"></div>
     <div class="detail-hero-content">
       <div class="detail-tag">Sumo Robotics · Robotex Egypt 2025</div>
@@ -2041,23 +2041,23 @@
       <div class="detail-section-title">// Gallery</div>
       <div class="gallery">
         <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
-          <img src="images/r2.jpg" alt="3rd Place Award" />
+          <img src="images/R2.jpg" alt="3rd Place Award" />
           <div class="gallery-caption">3rd Place Award — Sumo Mega Senior with MTR team</div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/r5.jpg" alt="Adjusting the robot" />
+          <img src="images/R5.jpg" alt="Adjusting the robot" />
           <div class="gallery-caption">Pre-match setup — adjusting robot at the ring edge</div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/r3.jpg" alt="Fine-tuning electrical connections" />
+          <img src="images/R3.jpg" alt="Fine-tuning electrical connections" />
           <div class="gallery-caption">Fine-tuning electrical connections before the match</div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/r1.jpg" alt="Match action" />
+          <img src="images/R1.jpg" alt="Match action" />
           <div class="gallery-caption">Match against opposing team on the sumo ring</div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/r4.jpg" alt="Official match shot" />
+          <img src="images/R4.jpg" alt="Official match shot" />
           <div class="gallery-caption">Official Robotex match — both robots facing off with referee</div>
         </div>
       </div>
@@ -2301,73 +2301,6 @@
   }
 
 </script>
-
-
-<div id="page-proj-penguin" class="detail-page" style="display:none;">
-  <div class="detail-nav">
-    <button class="back-btn" onclick="showProjectPage(null)">&#8592; Back to Portfolio</button>
-    <div class="detail-nav-right">
-      <span class="mtr-pill">Completed &#8212; Term 7</span>
-      <span class="award-pill">Alexandria National University</span>
-    </div>
-  </div>
-  <div class="detail-hero" style="height:380px;overflow:hidden;position:relative;">
-    <img src="images/penguin_pcb.jpeg" alt="Mini Penguin PCB" class="detail-hero-img" style="filter:brightness(0.35);object-position:center;" />
-    <div class="detail-hero-overlay"></div>
-    <div class="detail-hero-content">
-      <div class="detail-tag">Humanoid Robotics &#183; Full Mechatronics &#183; Term 7</div>
-      <h1 class="detail-title">Mini Penguin<br><span class="accent">Humanoid Robot</span></h1>
-      <div class="detail-subtitle">ESP32 &#183; ROS2 &#183; Custom PCB &#183; Vision Control &#183; MQTT</div>
-    </div>
-  </div>
-  <div class="detail-body">
-    <div class="detail-left">
-      <div class="detail-section-title">// About the Project</div>
-      <p class="detail-text">A full humanoid robot built for Term 7 at Alexandria National University. The Mini Penguin robot mimics human body motion using <strong>9 MG995 servo motors</strong> driven by an <strong>ESP32</strong> via PWM. High-level control runs on <strong>ROS2</strong>, communicating with the ESP32 via <strong>WiFi and MQTT</strong>.</p>
-      <p class="detail-text">The robot includes a <strong>custom double-layer PCB</strong> designed in EasyEDA for power distribution and servo routing. A USB camera feeds a <strong>ROS2 vision pipeline</strong> for real-time object detection and motion planning.</p>
-      <div class="detail-section-title" style="margin-top:36px;">// ROS2 Architecture</div>
-      <div class="role-list">
-        <div class="role-item"><span class="role-dot accent"></span>camera_node &#8594; /camera/image_raw</div>
-        <div class="role-item"><span class="role-dot accent"></span>ball_detector &#8594; /blue_point, /red_point</div>
-        <div class="role-item"><span class="role-dot accent"></span>planner &#8594; /motion_cmd</div>
-        <div class="role-item"><span class="role-dot accent"></span>mqtt_motion &#8594; ESP32 over WiFi</div>
-        <div class="role-item"><span class="role-dot accent"></span>ESP32 &#8594; PWM &#8594; 9x MG995 Servos</div>
-      </div>
-      <div class="detail-section-title" style="margin-top:36px;">// My Contributions</div>
-      <div class="role-list">
-        <div class="role-item"><span class="role-dot accent"></span>Custom double-layer PCB design (EasyEDA)</div>
-        <div class="role-item"><span class="role-dot accent"></span>Power distribution &#8212; 5V/10A with MOSFET protection</div>
-        <div class="role-item"><span class="role-dot accent"></span>ESP32 firmware &#8212; servo PWM control (PlatformIO)</div>
-        <div class="role-item"><span class="role-dot accent"></span>ROS2 node integration and MQTT bridge</div>
-        <div class="role-item"><span class="role-dot accent"></span>Electrical wiring and full system integration</div>
-      </div>
-      <div class="detail-tags" style="margin-top:28px;">
-        <span class="tag">ESP32</span><span class="tag">ROS2</span><span class="tag">PCB Design</span>
-        <span class="tag">EasyEDA</span><span class="tag">MQTT</span><span class="tag">OpenCV</span>
-        <span class="tag">PlatformIO</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">MG995</span>
-      </div>
-    </div>
-    <div class="detail-right">
-      <div class="detail-section-title">// Demo Video</div>
-      <div style="margin-bottom:24px;border:1px solid var(--line);background:var(--bg3);">
-        <video src="images/penguin_demo.mp4" controls style="width:100%;display:block;max-height:300px;background:#000;" poster="images/penguin_pcb.jpeg">
-          Your browser does not support video.
-        </video>
-      </div>
-      <div class="detail-section-title">// Gallery</div>
-      <div class="gallery">
-        <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
-          <img src="images/penguin_pcb.jpeg" alt="Custom PCB Design" />
-          <div class="gallery-caption">Custom double-layer PCB &#8212; ESP32 + 9 servo headers</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this,'')">
-          <img src="images/penguin_ros.png" alt="ROS2 Node Graph" />
-          <div class="gallery-caption">ROS2 node graph &#8212; camera to MQTT motion pipeline</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
