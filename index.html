@@ -862,10 +862,570 @@
     opacity: 1;
     transform: none;
   }
+
+  /* ── COMPETITIONS ── */
+  #competitions {
+    padding: 100px 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .mtr-badge {
+    margin-bottom: 48px;
+  }
+
+  .mtr-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--line2);
+    background: rgba(232,184,75,0.04);
+    font-family: "Share Tech Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .mtr-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  .mtr-label { color: var(--muted); text-transform: uppercase; }
+  .mtr-team  { color: var(--accent); font-weight: 600; }
+  .mtr-sep   { color: var(--muted); }
+  .mtr-desc  { color: var(--text); }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2px;
+  }
+
+  .comp-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    isolation: isolate;
+  }
+
+  .comp-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(232,184,75,0.1);
+  }
+
+  .comp-img {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+  }
+
+  .comp-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .comp-card:hover .comp-img img { transform: scale(1.04); }
+
+  .comp-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,11,13,0.7) 0%, transparent 50%);
+  }
+
+  .comp-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: "Share Tech Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: rgba(10,11,13,0.85);
+    z-index: 2;
+  }
+
+  .comp-badge.award {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    font-size: 10px;
+  }
+
+  .comp-body { padding: 24px; }
+
+  .comp-cat {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
+
+  .comp-title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .comp-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .comp-more {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-top: 16px;
+    transition: letter-spacing 0.2s;
+  }
+
+  .comp-card:hover .comp-more { letter-spacing: 0.25em; }
+
+  /* ── DETAIL PAGES ── */
+  .detail-page {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 500;
+    overflow-y: auto;
+  }
+
+  .detail-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(10,11,13,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .back-btn {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: none;
+    border: 1px solid var(--line2);
+    padding: 8px 16px;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .back-btn:hover {
+    border-color: var(--accent);
+    background: rgba(232,184,75,0.08);
+  }
+
+  .detail-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .mtr-pill {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 9px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(232,184,75,0.06);
+  }
+
+  .award-pill {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 9px;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 4px 12px;
+    letter-spacing: 0.12em;
+    background: rgba(75,232,160,0.06);
+  }
+
+  .detail-hero {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+  }
+
+  .detail-hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.45);
+  }
+
+  .detail-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 60%);
+  }
+
+  .detail-hero-content {
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    right: 48px;
+    z-index: 2;
+  }
+
+  .detail-tag {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .detail-tag::before {
+    content: "";
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  .detail-title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.95;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .detail-subtitle {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 12px;
+    color: var(--text);
+    letter-spacing: 0.1em;
+  }
+
+  .detail-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 60px 48px 80px;
+    max-width: 1400px;
+  }
+
+  .detail-section-title {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .detail-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .detail-text strong { color: var(--accent); font-weight: 600; }
+
+  .role-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .role-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .role-dot.accent { background: var(--accent); }
+
+  .detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .result-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    border: 1px solid var(--accent);
+    background: rgba(232,184,75,0.05);
+    margin-top: 8px;
+  }
+
+  .result-num {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .result-title {
+    font-family: "Share Tech Mono", monospace;
+    font-size: 12px;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .result-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: "Share Tech Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg3);
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%; height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s;
+    filter: brightness(0.9);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1);
+  }
+
+  .gallery-item.gallery-main {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-item.gallery-main img { height: 260px; }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 12px;
+    background: rgba(10,11,13,0.8);
+    font-family: "Share Tech Mono", monospace;
+    font-size: 9px;
+    color: var(--text);
+    letter-spacing: 0.08em;
+    transform: translateY(100%);
+    transition: transform 0.2s;
+  }
+
+  .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+  @media(max-width:768px) {
+    #competitions { padding: 60px 20px; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .detail-body { grid-template-columns: 1fr; padding: 40px 20px 60px; gap: 40px; }
+    .detail-hero-content { left: 20px; right: 20px; }
+    .detail-nav { padding: 0 20px; }
+    .gallery { grid-template-columns: 1fr; }
+  }
+
+
+  /* ── LIGHTBOX ── */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .lightbox-overlay.open { display: flex; }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 82vh;
+    object-fit: contain;
+    display: block;
+    border: 1px solid var(--line2);
+  }
+  .lightbox-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-top: 14px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 28px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 20px;
+    color: var(--muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: var(--accent); }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 28px;
+    color: var(--muted);
+    cursor: pointer;
+    background: rgba(10,11,13,0.7);
+    border: 1px solid var(--line);
+    padding: 10px 16px;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .lightbox-nav:hover { color: var(--accent); border-color: var(--accent); }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .gallery-item { cursor: zoom-in; }
+
+  /* ── ROV 2026 SONAR ANIMATION ── */
+  .rov26-thumb {
+    height: 200px;
+    background: #020c14;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sonar-wrap {
+    position: relative;
+    width: 120px; height: 120px;
+    flex-shrink: 0;
+  }
+  .sonar-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(75,232,160,0.5);
+    animation: sonar-expand 3s ease-out infinite;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 0; height: 0;
+  }
+  .sonar-ring:nth-child(1) { animation-delay: 0s; }
+  .sonar-ring:nth-child(2) { animation-delay: 1s; }
+  .sonar-ring:nth-child(3) { animation-delay: 2s; }
+  @keyframes sonar-expand {
+    0%   { width: 0; height: 0; opacity: 0.9; border-color: rgba(75,232,160,0.8); }
+    100% { width: 180px; height: 180px; opacity: 0; border-color: rgba(75,232,160,0); }
+  }
+  .sonar-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 16px var(--accent2), 0 0 32px rgba(75,232,160,0.4);
+    animation: core-beat 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes core-beat {
+    from { box-shadow: 0 0 8px var(--accent2); }
+    to   { box-shadow: 0 0 24px var(--accent2), 0 0 48px rgba(75,232,160,0.5); }
+  }
+  .sonar-sweep {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 90px; height: 1px;
+    transform-origin: left center;
+    background: linear-gradient(90deg, rgba(75,232,160,0.9), transparent);
+    animation: sweep-rotate 3s linear infinite;
+    box-shadow: 0 0 6px var(--accent2);
+  }
+  @keyframes sweep-rotate { to { transform: rotate(360deg); } }
+  .rov26-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(75,232,160,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(75,232,160,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .rov26-label {
+    position: absolute;
+    bottom: 14px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    color: var(--accent2);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    animation: blink-slow 2s step-end infinite;
+  }
+  @keyframes blink-slow { 0%,100%{opacity:0.7} 50%{opacity:0.2} }
+
+  /* ── PROJECT DETAIL PAGES ── */
+  #page-proj-arm, #page-proj-esp32, #page-proj-vision, #page-proj-rov26 {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 500;
+    overflow-y: auto;
+    display: none;
+  }
+
 </style>
 </head>
 <body>
 
+<div id="main-portfolio">
 <div class="grid-bg"></div>
 
 <!-- NAV -->
@@ -985,7 +1545,7 @@
   <div class="projects-grid">
 
     <!-- PROJECT 1 — Robotic Arm -->
-    <div class="project-card fade-in" onclick="window.open('https://github.com/Eraverse-22/Eraverse22-RoboticArm','_blank')" style="cursor:pointer;">
+    <div class="project-card fade-in" onclick="showProjectPage('arm')" style="cursor:pointer;">
       <div class="project-img-placeholder" style="position:relative;overflow:hidden;height:200px;background:#0a0d10;">
         <img
           src="https://raw.githubusercontent.com/Eraverse-22/Eraverse22-RoboticArm/main/IMG-20241225-WA0001.jpg"
@@ -1012,29 +1572,8 @@
       </div>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="project-card fade-in">
-      <div class="project-img-placeholder" style="position:relative;">
-        <div class="project-img-icon">⚡</div>
-        <div class="project-img-overlay"></div>
-        <div class="project-status status-active" style="position:absolute;top:12px;right:12px;z-index:10;background:rgba(10,11,13,0.85);">Active</div>
-      </div>
-      <div class="project-body">
-        <div class="project-category">Embedded Systems</div>
-        <div class="project-title">ESP32 WiFi Motor<br>Control System</div>
-        <div class="project-desc">Real-time motor control over WiFi using ESP32 + HTTP server. Dual-channel PWM with a web dashboard for speed and direction input.</div>
-        <div class="project-tags">
-          <span class="tag">ESP32</span>
-          <span class="tag">C++</span>
-          <span class="tag">WiFi</span>
-          <span class="tag">PWM</span>
-          <span class="tag">PlatformIO</span>
-        </div>
-      </div>
-    </div>
-
     <!-- PROJECT 3 -->
-    <div class="project-card fade-in">
+    <div class="project-card fade-in" onclick="showProjectPage('vision')" style="cursor:pointer;">
       <div class="project-img-placeholder" style="position:relative;">
         <div class="project-img-icon">👁️</div>
         <div class="project-img-overlay"></div>
@@ -1049,6 +1588,36 @@
           <span class="tag">OpenCV</span>
           <span class="tag">Ollama</span>
           <span class="tag">Ubuntu</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- PROJECT — Mini Penguin Humanoid Robot -->
+    <div class="project-card fade-in" onclick="showProjectPage('penguin')" style="cursor:pointer;">
+      <div class="project-img-placeholder" style="position:relative;overflow:hidden;height:200px;background:#0a0d10;">
+        <img
+          src="images/penguin_pcb.jpeg"
+          alt="Mini Penguin Humanoid Robot PCB"
+          style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.9;"
+          onerror="this.style.display='none';"
+        />
+        <div class="project-img-overlay"></div>
+        <div class="project-status status-done" style="position:absolute;top:12px;right:12px;z-index:10;background:rgba(10,11,13,0.85);">Completed — Term 7</div>
+      </div>
+      <div class="project-body">
+        <div class="project-category">Humanoid Robotics / Full Stack</div>
+        <div class="project-title">Mini Penguin<br>Humanoid Robot</div>
+        <div class="project-desc">ESP32-based humanoid robot with 9 MG995 servo motors, custom double-layer PCB, ROS2 vision pipeline, and MQTT-based motion control. Full mechatronics system — mechanical, electrical, and software.</div>
+        <div class="project-tags">
+          <span class="tag">ESP32</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">PCB Design</span>
+          <span class="tag">EasyEDA</span>
+          <span class="tag">MQTT</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">PlatformIO</span>
         </div>
       </div>
     </div>
@@ -1255,6 +1824,105 @@
   </div>
 </section>
 
+
+<!-- COMPETITIONS -->
+<section id="competitions">
+  <div class="section-header fade-in">
+    <div>
+      <div class="section-tag">// 05 — Field Work</div>
+      <h2>Competitions</h2>
+    </div>
+    <div class="section-count">05</div>
+  </div>
+
+  <div class="mtr-badge fade-in">
+    <div class="mtr-inner">
+      <div class="mtr-dot"></div>
+      <span class="mtr-label">Member of</span>
+      <span class="mtr-team">Mind Tech Robotics (MTR)</span>
+      <span class="mtr-sep">—</span>
+      <span class="mtr-desc">University Competition Team</span>
+    </div>
+  </div>
+
+  <div class="comp-grid fade-in">
+
+    <!-- ROV 2025 -->
+    <div class="comp-card" onclick="showPage('rov')">
+      <div class="comp-img">
+        <img src="images/rov1.jpg" alt="MATE ROV Egypt 2025" />
+        <div class="comp-img-overlay"></div>
+        <div class="comp-badge">2024 – 2025</div>
+      </div>
+      <div class="comp-body">
+        <div class="comp-cat">Underwater Robotics / Electrical &amp; R&amp;D</div>
+        <div class="comp-title">MATE ROV Egypt<br>Competition</div>
+        <div class="comp-desc">13th edition of MATE ROV Egypt. Participated as part of the MTR team — responsible for electrical systems, wiring, power distribution, and R&amp;D on the underwater vehicle.</div>
+        <div class="comp-tags">
+          <span class="tag">ROV</span>
+          <span class="tag">Electrical Systems</span>
+          <span class="tag">R&amp;D</span>
+          <span class="tag">Power Distribution</span>
+          <span class="tag">Wiring</span>
+        </div>
+        <div class="comp-more">View Details →</div>
+      </div>
+    </div>
+
+    <!-- Robotex 2025 -->
+    <div class="comp-card" onclick="showPage('robotex')">
+      <div class="comp-img">
+        <img src="images/r2.jpg" alt="Robotex Egypt 2025" />
+        <div class="comp-img-overlay"></div>
+        <div class="comp-badge award">🥉 3rd Place</div>
+      </div>
+      <div class="comp-body">
+        <div class="comp-cat">Sumo Robotics / Full Mechatronics Stack</div>
+        <div class="comp-title">Robotex Egypt 2025<br>Sumo Mega Senior</div>
+        <div class="comp-desc">Secured 3rd place at Robotex Egypt 2025 in the Sumo Mega Senior category with MTR. Contributed across the full mechatronics stack — coding, electrical design, and mechanical integration. Qualified to Estonia.</div>
+        <div class="comp-tags">
+          <span class="tag">Sumo Robotics</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">C++</span>
+          <span class="tag">Electrical Design</span>
+          <span class="tag">Mechanical</span>
+        </div>
+        <div class="comp-more">View Details →</div>
+      </div>
+    </div>
+
+    <!-- ROV 2026 — ACTIVE -->
+    <div class="comp-card" onclick="showPage('rov26')">
+      <div class="comp-img" style="background:#020c14;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div class="rov26-grid"></div>
+        <div class="sonar-wrap">
+          <div class="sonar-ring"></div>
+          <div class="sonar-ring"></div>
+          <div class="sonar-ring"></div>
+          <div class="sonar-sweep"></div>
+          <div class="sonar-center"></div>
+        </div>
+        <div class="comp-badge" style="border-color:var(--accent2);color:var(--accent2);">Active — 2026</div>
+        <div class="rov26-label">▶ Scanning underwater systems...</div>
+      </div>
+      <div class="comp-body">
+        <div class="comp-cat">Underwater Robotics / MTR</div>
+        <div class="comp-title">MATE ROV Egypt<br>2026</div>
+        <div class="comp-desc">Currently in active development with Mind Tech Robotics for the 2026 MATE ROV Egypt competition. Leading electrical systems, power architecture, and R&amp;D on the new underwater vehicle.</div>
+        <div class="comp-tags">
+          <span class="tag">ROV</span>
+          <span class="tag">Electrical</span>
+          <span class="tag">R&amp;D</span>
+          <span class="tag">MTR</span>
+          <span class="tag">In Progress</span>
+        </div>
+        <div class="comp-more">View Details →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">Erakat</div>
@@ -1262,13 +1930,245 @@
     <div class="footer-links">
       <a href="https://github.com/Eraverse-22" target="_blank">github.com/Eraverse-22</a>
       <a href="https://www.linkedin.com/in/mostafa-erakat-134b7a375/" target="_blank">linkedin.com/in/mostafa-erakat</a>
-      <a href="/cdn-cgi/l/email-protection#6f0a1d0e040e1b02001c1b0e090e5d5d2f08020e0603410c0002"><span class="__cf_email__" data-cfemail="c6a3b4a7ada7b2aba9b5b2a7a0a7f4f486a1aba7afaae8a5a9ab">[email&#160;protected]</span></a>
+      <a href="mailto:erakatmostafa22@gmail.com">erakatmostafa22@gmail.com</a>
     </div>
-    <div class="footer-copy">© 2025 Mostafa Erakat — Built with intent.</div>
+    <div class="footer-copy">© 2026 Mostafa Erakat — Built with intent.</div>
   </div>
 </footer>
+</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightboxDirect()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1);event.stopPropagation()">&#8249;</button>
+  <img class="lightbox-img" id="lb-img" src="" alt="" />
+  <div class="lightbox-caption" id="lb-cap"></div>
+  <button class="lightbox-nav lightbox-next" onclick="lbNav(1);event.stopPropagation()">&#8250;</button>
+</div>
+
+<div id="page-rov" class="detail-page" style="display:none;">
+  <div class="detail-nav">
+    <button class="back-btn" onclick="showPage(null)">← Back to Portfolio</button>
+    <div class="detail-nav-right"><span class="mtr-pill">Mind Tech Robotics</span></div>
+  </div>
+  <div class="detail-hero">
+    <img src="images/rov1.jpg" alt="ROV Team" class="detail-hero-img" />
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <div class="detail-tag">Underwater Robotics · 2024 – 2025</div>
+      <h1 class="detail-title">MATE ROV Egypt<br><span class="accent">Competition</span></h1>
+      <div class="detail-subtitle">13th Edition · MTR Team · Electrical &amp; R&amp;D</div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-left">
+      <div class="detail-section-title">// About the Competition</div>
+      <p class="detail-text">The MATE ROV Egypt Competition is the country's premier underwater robotics contest. Teams design, build, and pilot ROVs to complete real-world mission tasks.</p>
+      <p class="detail-text">I participated with <strong>Mind Tech Robotics (MTR)</strong> as part of the electrical systems team and R&amp;D — covering wiring architecture, power distribution, thruster integration, and system troubleshooting under competition conditions.</p>
+      <div class="detail-section-title" style="margin-top:36px;">// My Role</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot"></span>Electrical system design and wiring</div>
+        <div class="role-item"><span class="role-dot"></span>Power distribution architecture</div>
+        <div class="role-item"><span class="role-dot"></span>Thruster and sensor integration</div>
+        <div class="role-item"><span class="role-dot"></span>R&amp;D — testing and troubleshooting</div>
+        <div class="role-item"><span class="role-dot"></span>On-site competition support</div>
+      </div>
+      <div class="detail-tags" style="margin-top:32px;">
+        <span class="tag">ROV</span><span class="tag">Electrical Systems</span><span class="tag">R&amp;D</span>
+        <span class="tag">Power Distribution</span><span class="tag">Wiring</span><span class="tag">MTR Team</span>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="detail-section-title">// Gallery</div>
+      <div class="gallery">
+        <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
+          <img src="images/rov1.jpg" alt="MTR Team at MATE ROV Egypt" />
+          <div class="gallery-caption">MTR team at the 13th MATE ROV Egypt Competition</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/rov2.jpg" alt="ROV Vehicle" />
+          <div class="gallery-caption">The ROV vehicle — electrical systems I worked on</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-robotex" class="detail-page" style="display:none;">
+  <div class="detail-nav">
+    <button class="back-btn" onclick="showPage(null)">← Back to Portfolio</button>
+    <div class="detail-nav-right">
+      <span class="mtr-pill">Mind Tech Robotics</span>
+      <span class="award-pill">🥉 3rd Place · Qualified to Estonia</span>
+    </div>
+  </div>
+  <div class="detail-hero">
+    <img src="images/r2.jpg" alt="Robotex 3rd Place" class="detail-hero-img" />
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <div class="detail-tag">Sumo Robotics · Robotex Egypt 2025</div>
+      <h1 class="detail-title">Robotex Egypt 2025<br><span class="accent">Sumo Mega Senior</span></h1>
+      <div class="detail-subtitle">🥉 3rd Place Champion · Qualified to Estonia</div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-left">
+      <div class="detail-section-title">// About the Competition</div>
+      <p class="detail-text">Robotex Egypt 2025 is one of the largest robotics competitions in the region. The Sumo Mega Senior category pits autonomous sumo robots in a high-stakes elimination format.</p>
+      <p class="detail-text">Competing with <strong>Mind Tech Robotics (MTR)</strong>, we secured <strong>3rd place</strong> — a full mechatronics challenge where I contributed across the entire system: coding the control logic, designing the electrical system, and integrating the mechanical components.</p>
+      <div class="detail-section-title" style="margin-top:36px;">// My Role</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot accent"></span>Control logic programming (C++ / Arduino)</div>
+        <div class="role-item"><span class="role-dot accent"></span>Electrical system design and integration</div>
+        <div class="role-item"><span class="role-dot accent"></span>Sensor selection and wiring</div>
+        <div class="role-item"><span class="role-dot accent"></span>Mechanical assembly and cabling</div>
+        <div class="role-item"><span class="role-dot accent"></span>Live competition tuning and optimization</div>
+      </div>
+      <div class="detail-section-title" style="margin-top:36px;">// Result</div>
+      <div class="result-box">
+        <div class="result-num">3rd</div>
+        <div class="result-info">
+          <div class="result-title">Place — Sumo Mega Senior</div>
+          <div class="result-sub">Qualified to represent Egypt at Robotex Estonia 2025</div>
+        </div>
+      </div>
+      <div class="detail-tags" style="margin-top:32px;">
+        <span class="tag">Sumo Robotics</span><span class="tag">Arduino</span><span class="tag">C++</span>
+        <span class="tag">Electrical Design</span><span class="tag">Mechanical</span><span class="tag">MTR Team</span>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="detail-section-title">// Gallery</div>
+      <div class="gallery">
+        <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
+          <img src="images/r2.jpg" alt="3rd Place Award" />
+          <div class="gallery-caption">3rd Place Award — Sumo Mega Senior with MTR team</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/r5.jpg" alt="Adjusting the robot" />
+          <div class="gallery-caption">Pre-match setup — adjusting robot at the ring edge</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/r3.jpg" alt="Fine-tuning electrical connections" />
+          <div class="gallery-caption">Fine-tuning electrical connections before the match</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/r1.jpg" alt="Match action" />
+          <div class="gallery-caption">Match against opposing team on the sumo ring</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/r4.jpg" alt="Official match shot" />
+          <div class="gallery-caption">Official Robotex match — both robots facing off with referee</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-rov26" class="detail-page" style="display:none;">
+  <div class="detail-nav">
+    <button class="back-btn" onclick="showPage(null)">← Back to Portfolio</button>
+    <div class="detail-nav-right">
+      <span class="mtr-pill">Mind Tech Robotics</span>
+      <span class="award-pill">▶ Active — 2026</span>
+    </div>
+  </div>
+  <div class="detail-hero" style="height:360px;background:#020c14;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+    <div class="rov26-grid" style="position:absolute;inset:0;"></div>
+    <div class="sonar-wrap" style="width:200px;height:200px;position:relative;">
+      <div class="sonar-ring"></div><div class="sonar-ring"></div><div class="sonar-ring"></div>
+      <div class="sonar-sweep"></div>
+      <div class="sonar-center"></div>
+    </div>
+    <div class="detail-hero-content" style="position:absolute;bottom:40px;left:48px;right:48px;">
+      <div class="detail-tag" style="color:var(--accent2);">Underwater Robotics · MTR · 2026</div>
+      <h1 class="detail-title">MATE ROV Egypt<br><span class="accent">2026</span></h1>
+      <div class="detail-subtitle" style="color:var(--accent2);">Currently in active development</div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-left">
+      <div class="detail-section-title">// About</div>
+      <p class="detail-text">Currently in active development with <strong>Mind Tech Robotics (MTR)</strong> for the 14th MATE ROV Egypt Competition in 2026. Building on experience from ROV 2025, taking a more senior role in electrical systems architecture and R&amp;D.</p>
+      <p class="detail-text">This page will be updated with photos and full documentation as the build progresses.</p>
+      <div class="detail-section-title" style="margin-top:36px;">// My Role</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot" style="background:var(--accent2)"></span>Electrical systems architecture</div>
+        <div class="role-item"><span class="role-dot" style="background:var(--accent2)"></span>Power distribution design</div>
+        <div class="role-item"><span class="role-dot" style="background:var(--accent2)"></span>R&amp;D — component testing</div>
+        <div class="role-item"><span class="role-dot" style="background:var(--accent2)"></span>System integration</div>
+      </div>
+      <div class="detail-tags" style="margin-top:28px;">
+        <span class="tag">ROV</span><span class="tag">Electrical</span><span class="tag">R&amp;D</span>
+        <span class="tag">MTR</span><span class="tag">Power Systems</span>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="detail-section-title">// Status</div>
+      <div class="result-box" style="border-color:var(--accent2);background:rgba(75,232,160,0.04);">
+        <div class="result-num" style="color:var(--accent2);font-size:36px;">2026</div>
+        <div class="result-info">
+          <div class="result-title" style="color:var(--accent2);">Active Build — In Progress</div>
+          <div class="result-sub">MATE ROV Egypt · Mind Tech Robotics</div>
+        </div>
+      </div>
+      <p class="detail-text" style="margin-top:24px;font-size:12px;color:var(--muted);">Photos and full documentation will be added as the project develops.</p>
+    </div>
+  </div>
+</div>
+
+<div id="page-proj-arm" class="detail-page" style="display:none;">
+  <div class="detail-nav">
+    <button class="back-btn" onclick="showProjectPage(null)">← Back to Portfolio</button>
+    <div class="detail-nav-right"><span class="mtr-pill">Completed — Term 5</span></div>
+  </div>
+  <div class="detail-hero" style="height:360px;">
+    <img src="https://raw.githubusercontent.com/Eraverse-22/Eraverse22-RoboticArm/main/IMG-20241225-WA0001.jpg" alt="Robotic Arm" class="detail-hero-img" onerror="this.style.opacity=0.1" />
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <div class="detail-tag">Embedded Systems · University Project</div>
+      <h1 class="detail-title">Dummy Robotic<br><span class="accent">Arm</span></h1>
+      <div class="detail-subtitle">Arduino · FSM Control · Bluetooth · Servo Integration</div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-left">
+      <div class="detail-section-title">// About the Project</div>
+      <p class="detail-text">A 2-link robotic arm (20cm + 10cm) built as a university engineering project. The system uses <strong>Finite State Machine (FSM)</strong> logic to handle different operational states — idle, receiving commands, executing movement, and grip control.</p>
+      <p class="detail-text">Controlled wirelessly via <strong>Bluetooth (HC-05)</strong>. My role focused on <strong>electrical system design</strong>, control logic implementation, and servo integration including torque management for stable pick-and-place operations.</p>
+      <div class="detail-section-title" style="margin-top:36px;">// My Role</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot accent"></span>Electrical system design and wiring</div>
+        <div class="role-item"><span class="role-dot accent"></span>FSM control logic (C++ / Arduino)</div>
+        <div class="role-item"><span class="role-dot accent"></span>Servo torque management</div>
+        <div class="role-item"><span class="role-dot accent"></span>Bluetooth integration (HC-05)</div>
+        <div class="role-item"><span class="role-dot accent"></span>Pick-and-place movement sequences</div>
+      </div>
+      <div class="detail-tags" style="margin-top:28px;">
+        <span class="tag">Arduino</span><span class="tag">C++</span><span class="tag">FSM</span>
+        <span class="tag">Bluetooth</span><span class="tag">HC-05</span><span class="tag">Servo Control</span>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="https://github.com/Eraverse-22/Eraverse22-RoboticArm" target="_blank" class="btn btn-outline" style="display:inline-flex;">→ View on GitHub</a>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="detail-section-title">// Gallery</div>
+      <div class="gallery">
+        <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
+          <img src="https://raw.githubusercontent.com/Eraverse-22/Eraverse22-RoboticArm/main/IMG-20241225-WA0001.jpg" alt="Robotic Arm Build" />
+          <div class="gallery-caption">Final build — 2-link robotic arm</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="https://raw.githubusercontent.com/Eraverse-22/Eraverse22-RoboticArm/main/Circuit-diagram-of-robotic-arm.jpg" alt="Circuit Diagram" />
+          <div class="gallery-caption">Circuit diagram</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
   // ── SCROLL FADE-IN ──
   const faders = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
@@ -1324,7 +2224,150 @@
   }, { threshold: 0.1 });
 
   heroObserver.observe(document.getElementById('hero'));
+
+  // ── LIGHTBOX ──
+  let lbImages = [];
+  let lbIndex = 0;
+
+  function openLightbox(el, caption) {
+    const gallery = el.closest('.gallery') || el.closest('.detail-right') || document.body;
+    const allItems = Array.from(gallery.querySelectorAll('.gallery-item'));
+    lbImages = allItems.map(item => ({
+      src: item.querySelector('img') ? item.querySelector('img').src : '',
+      cap: item.querySelector('.gallery-caption') ? item.querySelector('.gallery-caption').textContent.trim() : ''
+    }));
+    lbIndex = allItems.indexOf(el);
+    if (lbIndex < 0) lbIndex = 0;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderLightbox() {
+    const item = lbImages[lbIndex];
+    if (!item) return;
+    document.getElementById('lb-img').src = item.src;
+    document.getElementById('lb-cap').textContent = (lbIndex + 1) + ' / ' + lbImages.length + (item.cap ? '  —  ' + item.cap : '');
+  }
+
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    renderLightbox();
+  }
+
+  function closeLightbox(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightboxDirect();
+  }
+
+  function closeLightboxDirect() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightboxDirect();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // ── PROJECT PAGE NAVIGATION ──
+  function showProjectPage(id) {
+    document.querySelectorAll('.detail-page').forEach(p => p.style.display = 'none');
+    const main = document.getElementById('main-portfolio');
+    if (id) {
+      if (main) main.style.display = 'none';
+      const page = document.getElementById('page-proj-' + id);
+      if (page) { page.style.display = 'block'; window.scrollTo(0,0); }
+    } else {
+      if (main) main.style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  }
+
+
+  // ── PAGE NAVIGATION ──
+  function showPage(id) {
+    document.querySelectorAll('.detail-page').forEach(p => p.style.display = 'none');
+    const main = document.getElementById('main-portfolio');
+    if (id) {
+      if (main) main.style.display = 'none';
+      const page = document.getElementById('page-' + id) || document.getElementById('page-proj-' + id);
+      if (page) { page.style.display = 'block'; window.scrollTo(0, 0); }
+    } else {
+      if (main) main.style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  }
+
 </script>
+
+
+<div id="page-proj-penguin" class="detail-page" style="display:none;">
+  <div class="detail-nav">
+    <button class="back-btn" onclick="showProjectPage(null)">&#8592; Back to Portfolio</button>
+    <div class="detail-nav-right">
+      <span class="mtr-pill">Completed &#8212; Term 7</span>
+      <span class="award-pill">Alexandria National University</span>
+    </div>
+  </div>
+  <div class="detail-hero" style="height:380px;overflow:hidden;position:relative;">
+    <img src="images/penguin_pcb.jpeg" alt="Mini Penguin PCB" class="detail-hero-img" style="filter:brightness(0.35);object-position:center;" />
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <div class="detail-tag">Humanoid Robotics &#183; Full Mechatronics &#183; Term 7</div>
+      <h1 class="detail-title">Mini Penguin<br><span class="accent">Humanoid Robot</span></h1>
+      <div class="detail-subtitle">ESP32 &#183; ROS2 &#183; Custom PCB &#183; Vision Control &#183; MQTT</div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-left">
+      <div class="detail-section-title">// About the Project</div>
+      <p class="detail-text">A full humanoid robot built for Term 7 at Alexandria National University. The Mini Penguin robot mimics human body motion using <strong>9 MG995 servo motors</strong> driven by an <strong>ESP32</strong> via PWM. High-level control runs on <strong>ROS2</strong>, communicating with the ESP32 via <strong>WiFi and MQTT</strong>.</p>
+      <p class="detail-text">The robot includes a <strong>custom double-layer PCB</strong> designed in EasyEDA for power distribution and servo routing. A USB camera feeds a <strong>ROS2 vision pipeline</strong> for real-time object detection and motion planning.</p>
+      <div class="detail-section-title" style="margin-top:36px;">// ROS2 Architecture</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot accent"></span>camera_node &#8594; /camera/image_raw</div>
+        <div class="role-item"><span class="role-dot accent"></span>ball_detector &#8594; /blue_point, /red_point</div>
+        <div class="role-item"><span class="role-dot accent"></span>planner &#8594; /motion_cmd</div>
+        <div class="role-item"><span class="role-dot accent"></span>mqtt_motion &#8594; ESP32 over WiFi</div>
+        <div class="role-item"><span class="role-dot accent"></span>ESP32 &#8594; PWM &#8594; 9x MG995 Servos</div>
+      </div>
+      <div class="detail-section-title" style="margin-top:36px;">// My Contributions</div>
+      <div class="role-list">
+        <div class="role-item"><span class="role-dot accent"></span>Custom double-layer PCB design (EasyEDA)</div>
+        <div class="role-item"><span class="role-dot accent"></span>Power distribution &#8212; 5V/10A with MOSFET protection</div>
+        <div class="role-item"><span class="role-dot accent"></span>ESP32 firmware &#8212; servo PWM control (PlatformIO)</div>
+        <div class="role-item"><span class="role-dot accent"></span>ROS2 node integration and MQTT bridge</div>
+        <div class="role-item"><span class="role-dot accent"></span>Electrical wiring and full system integration</div>
+      </div>
+      <div class="detail-tags" style="margin-top:28px;">
+        <span class="tag">ESP32</span><span class="tag">ROS2</span><span class="tag">PCB Design</span>
+        <span class="tag">EasyEDA</span><span class="tag">MQTT</span><span class="tag">OpenCV</span>
+        <span class="tag">PlatformIO</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">MG995</span>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="detail-section-title">// Demo Video</div>
+      <div style="margin-bottom:24px;border:1px solid var(--line);background:var(--bg3);">
+        <video src="images/penguin_demo.mp4" controls style="width:100%;display:block;max-height:300px;background:#000;" poster="images/penguin_pcb.jpeg">
+          Your browser does not support video.
+        </video>
+      </div>
+      <div class="detail-section-title">// Gallery</div>
+      <div class="gallery">
+        <div class="gallery-item gallery-main" onclick="openLightbox(this,'')">
+          <img src="images/penguin_pcb.jpeg" alt="Custom PCB Design" />
+          <div class="gallery-caption">Custom double-layer PCB &#8212; ESP32 + 9 servo headers</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this,'')">
+          <img src="images/penguin_ros.png" alt="ROS2 Node Graph" />
+          <div class="gallery-caption">ROS2 node graph &#8212; camera to MQTT motion pipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
