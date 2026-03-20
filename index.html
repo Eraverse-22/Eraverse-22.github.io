@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa Erakat — Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0b0d;
+    --bg2:       #0f1114;
+    --bg3:       #151820;
+    --line:      #1e2229;
+    --line2:     #2a3040;
+    --text:      #c8cdd8;
+    --muted:     #545e72;
+    --accent:    #e8b84b;
+    --accent2:   #4be8a0;
+    --danger:    #e84b4b;
+    --white:     #eef0f5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── SCANLINE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(10,11,13,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-logo {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--muted); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(64px, 9vw, 140px);
+    line-height: 0.9;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  h1 .accent { color: var(--accent); }
+
+  .hero-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3vw, 40px);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 40px;
+  }
+
+  .hero-desc {
+    max-width: 540px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 56px;
+    border-left: 2px solid var(--line2);
+    padding-left: 20px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0b0d;
+  }
+
+  .btn-primary:hover {
+    background: var(--white);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line2);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-metrics {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .metric {
+    text-align: right;
+  }
+
+  .metric-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .metric-value span { color: var(--accent); }
+
+  .metric-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--white);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .section-count {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    color: var(--line2);
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .about-text p strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .about-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .spec-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+    font-size: 13px;
+  }
+
+  .spec-key {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .spec-val {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .spec-val.highlight { color: var(--accent); font-family: 'Share Tech Mono', monospace; font-size: 12px; }
+
+  /* ── PROJECTS ── */
+  #projects {
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color 0.2s;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    z-index: 2;
+  }
+
+  .project-card:hover .project-img-overlay {
+    opacity: 0.6;
+  }
+
+  .project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-img-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-img-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(45deg, transparent 48%, var(--line2) 49%, var(--line2) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, var(--line2) 49%, var(--line2) 51%, transparent 52%);
+    background-size: 30px 30px;
+    opacity: 0.3;
+  }
+
+  .project-img-icon {
+    font-size: 40px;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .project-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    mix-blend-mode: overlay;
+  }
+
+  .project-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid currentColor;
+  }
+
+  .status-active { color: var(--accent2); border-color: var(--accent2); background: rgba(75,232,160,0.08); }
+  .status-wip    { color: var(--accent);  border-color: var(--accent);  background: rgba(232,184,75,0.08); }
+  .status-done   { color: var(--muted);   border-color: var(--muted);   background: transparent; }
+
+  .project-body {
+    padding: 24px;
+  }
+
+  .project-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .project-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    color: var(--muted);
+  }
+
+  /* ── ADD PROJECT CARD ── */
+  .project-add {
+    border: 1px dashed var(--line2);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    gap: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .project-add:hover {
+    border-color: var(--accent);
+    background: rgba(232,184,75,0.03);
+  }
+
+  .project-add-icon {
+    font-size: 32px;
+    color: var(--line2);
+  }
+
+  .project-add span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── SKILLS ── */
+  #skills {
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    padding: 32px;
+  }
+
+  .skill-group-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .skill-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line2);
+  }
+
+  .skill-item {
+    margin-bottom: 18px;
+  }
+
+  .skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .skill-name {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .skill-level {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .skill-bar {
+    height: 2px;
+    background: var(--line2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 0;
+  }
+
+  .skill-fill.animate { width: var(--w); }
+
+  .skill-fill.green { background: var(--accent2); }
+
+  /* ── TECH STACK ICONS ── */
+  .stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .stack-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text);
+    letter-spacing: 0.08em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .stack-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .stack-chip .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .stack-chip .dot.green { background: var(--accent2); }
+
+  /* ── BLOG ── */
+  #blog {
+    padding: 100px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .blog-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .blog-item:hover .blog-title { color: var(--accent); }
+  .blog-item:hover .blog-arrow { transform: translateX(6px); color: var(--accent); }
+
+  .blog-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    padding-top: 3px;
+  }
+
+  .blog-content {}
+
+  .blog-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .blog-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .blog-excerpt {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .blog-arrow {
+    font-size: 20px;
+    color: var(--line2);
+    transition: transform 0.2s, color 0.2s;
+    padding-top: 4px;
+  }
+
+  .blog-add {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 28px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 1px dashed var(--line2);
+    transition: color 0.2s;
+  }
+
+  .blog-add:hover { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 60px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--line2);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .footer-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--line2);
+    letter-spacing: 0.1em;
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  /* ── CURSOR LINE ── */
+  .cursor-blink {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* ── TERMINAL HEADER ── */
+  .terminal-header {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .terminal-header .prompt { color: var(--accent2); }
+  .terminal-header .cmd { color: var(--text); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-status { display: none; }
+
+    #hero { padding: 100px 20px 60px; }
+    .hero-metrics { display: none; }
+
+    #about, #projects, #skills, #blog { padding: 60px 20px; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-layout { grid-template-columns: 1fr; }
+
+    .blog-item { grid-template-columns: 60px 1fr; }
+    .blog-arrow { display: none; }
+
+    footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .footer-links { align-items: flex-start; }
+    .footer-copy { text-align: left; }
+  }
+
+  /* ── FADE-IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ME<span>/</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#blog">Blog</a></li>
+  </ul>
+  <div class="nav-status">available for work</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Mechatronics Engineer — Egypt</div>
+  <h1>Mostafa<br><span class="accent">Erakat</span></h1>
+  <div class="hero-subtitle">Robotics · Embedded Systems · AI Integration</div>
+  <p class="hero-desc">
+    Building intelligent physical systems at the intersection of robotics, embedded hardware, and AI.
+    ROS2 pipelines, motor control, ESP32 firmware, and simulation — from CAD to code to control.
+    <span class="cursor-blink"></span>
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">→ View Projects</a>
+    <a href="#about" class="btn btn-outline">About Me</a>
+  </div>
+
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-value" id="counter-projects">0<span>+</span></div>
+      <div class="metric-label">Projects Built</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value" id="counter-techs">0<span>+</span></div>
+      <div class="metric-label">Technologies</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value" id="counter-years">0<span>yr</span></div>
+      <div class="metric-label">In Engineering</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-in">
+    <div>
+      <div class="section-tag">// 01 — Identity</div>
+      <h2>About</h2>
+    </div>
+    <div class="section-count">01</div>
+  </div>
+
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>
+        I'm a <strong>Mechatronics Engineering student</strong> based in Egypt, building at the edge of robotics, embedded systems, and AI. My work spans the full stack of physical intelligence — from mechanical design in SolidWorks to ROS2 simulation to real-time embedded firmware.
+      </p>
+      <p>
+        My focus is on <strong>intelligent robotic systems</strong>: machines that sense, reason, and act. Currently deep in ROS2 + Gazebo simulation, ESP32-based control systems, and integrating local LLMs into hardware workflows.
+      </p>
+      <p>
+        I build to learn, document to share, and design for scale. Every project here is a step toward becoming a systems-level AI-integrated robotics engineer.
+      </p>
+    </div>
+
+    <div class="about-specs">
+      <div class="spec-row">
+        <div class="spec-key">Status</div>
+        <div class="spec-val highlight">▶ Active / Building</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Location</div>
+        <div class="spec-val">Egypt 🇪🇬</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Discipline</div>
+        <div class="spec-val">Mechatronics Engineering</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Primary Stack</div>
+        <div class="spec-val">ROS2 · ESP32 · Python · SolidWorks</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Current Focus</div>
+        <div class="spec-val">ROS2 + AI Integration</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Target Role</div>
+        <div class="spec-val">AI-Integrated Robotics Engineer</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Open To</div>
+        <div class="spec-val">Freelance · Collaboration · Research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <div>
+      <div class="section-tag">// 02 — Work</div>
+      <h2>Projects</h2>
+    </div>
+    <div class="section-count">02</div>
+  </div>
+
+  <div class="terminal-header fade-in">
+    <span class="prompt">$</span>
+    <span class="cmd">ls ./projects --sort=recent</span>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card fade-in">
+      <div class="project-img-placeholder">
+        <div class="project-img-icon">🤖</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-status status-wip">In Progress</div>
+      <div class="project-body">
+        <div class="project-category">Robotics / Simulation</div>
+        <div class="project-title">ROS2 Robotic Arm<br>Simulation</div>
+        <div class="project-desc">6-DOF robotic arm modeled in SolidWorks, exported to URDF, simulated in Gazebo with joint trajectory control and collision detection.</div>
+        <div class="project-tags">
+          <span class="tag">ROS2</span>
+          <span class="tag">URDF</span>
+          <span class="tag">Gazebo</span>
+          <span class="tag">Python</span>
+          <span class="tag">SolidWorks</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card fade-in">
+      <div class="project-img-placeholder">
+        <div class="project-img-icon">⚡</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-status status-active">Active</div>
+      <div class="project-body">
+        <div class="project-category">Embedded Systems</div>
+        <div class="project-title">ESP32 WiFi Motor<br>Control System</div>
+        <div class="project-desc">Real-time motor control over WiFi using ESP32 + HTTP server. Dual-channel PWM with a web dashboard for speed and direction input.</div>
+        <div class="project-tags">
+          <span class="tag">ESP32</span>
+          <span class="tag">C++</span>
+          <span class="tag">WiFi</span>
+          <span class="tag">PWM</span>
+          <span class="tag">PlatformIO</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card fade-in">
+      <div class="project-img-placeholder">
+        <div class="project-img-icon">👁️</div>
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-status status-wip">In Progress</div>
+      <div class="project-body">
+        <div class="project-category">Computer Vision / AI</div>
+        <div class="project-title">Shape Recognition<br>Vision System</div>
+        <div class="project-desc">Camera-based shape classification pipeline for robotic pick-and-place. OpenCV preprocessing + local model inference on Ubuntu.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Ollama</span>
+          <span class="tag">Ubuntu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD NEW PROJECT CARD -->
+    <div class="project-card project-add fade-in" onclick="alert('Add your next project here — update the HTML!')">
+      <div class="project-add-icon">＋</div>
+      <span>Next Project</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <div>
+      <div class="section-tag">// 03 — Capabilities</div>
+      <h2>Skills &amp; Stack</h2>
+    </div>
+    <div class="section-count">03</div>
+  </div>
+
+  <div class="skills-layout fade-in">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Robotics &amp; Simulation</div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">ROS2 (Humble)</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 80%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">URDF / Xacro</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 78%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Gazebo Simulation</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 65%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">SolidWorks</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 60%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Embedded Systems</div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Arduino / AVR</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill green" style="--w: 85%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">ESP32 + WiFi/BT</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill green" style="--w: 80%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Motor Control / Power Electronics</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill green" style="--w: 65%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">PlatformIO / C++</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill green" style="--w: 62%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Software &amp; AI</div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Python (OOP)</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 75%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Ollama / Local LLMs</span>
+          <span class="skill-level">Learning</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 45%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">Computer Vision (OpenCV)</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 55%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-row">
+          <span class="skill-name">n8n Automation</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" style="--w: 58%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Full Stack</div>
+      <div class="stack-chips">
+        <div class="stack-chip"><span class="dot"></span>ROS2</div>
+        <div class="stack-chip"><span class="dot"></span>Gazebo</div>
+        <div class="stack-chip"><span class="dot green"></span>ESP32</div>
+        <div class="stack-chip"><span class="dot green"></span>Arduino</div>
+        <div class="stack-chip"><span class="dot"></span>Python</div>
+        <div class="stack-chip"><span class="dot green"></span>C++</div>
+        <div class="stack-chip"><span class="dot"></span>URDF</div>
+        <div class="stack-chip"><span class="dot"></span>SolidWorks</div>
+        <div class="stack-chip"><span class="dot"></span>AutoCAD</div>
+        <div class="stack-chip"><span class="dot"></span>Ollama</div>
+        <div class="stack-chip"><span class="dot green"></span>OpenCV</div>
+        <div class="stack-chip"><span class="dot"></span>n8n</div>
+        <div class="stack-chip"><span class="dot"></span>Ubuntu</div>
+        <div class="stack-chip"><span class="dot green"></span>PlatformIO</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-header fade-in">
+    <div>
+      <div class="section-tag">// 04 — Writing</div>
+      <h2>Blog &amp; Articles</h2>
+    </div>
+    <div class="section-count">04</div>
+  </div>
+
+  <div class="blog-list fade-in">
+
+    <div class="blog-item">
+      <div class="blog-date">MAR<br>2025</div>
+      <div class="blog-content">
+        <div class="blog-category">ROS2 · Simulation</div>
+        <div class="blog-title">How I Set Up a ROS2 + Gazebo Pipeline from Scratch</div>
+        <div class="blog-excerpt">Lessons from building a full simulation stack on Ubuntu — URDF design, joint controllers, and common errors I hit and fixed.</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </div>
+
+    <div class="blog-item">
+      <div class="blog-date">FEB<br>2025</div>
+      <div class="blog-content">
+        <div class="blog-category">Embedded Systems</div>
+        <div class="blog-title">ESP32 WiFi Motor Control — Architecture Breakdown</div>
+        <div class="blog-excerpt">Full system design for real-time motor commands over HTTP. PWM logic, duty cycle mapping, and latency testing results.</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </div>
+
+    <div class="blog-item">
+      <div class="blog-date">JAN<br>2025</div>
+      <div class="blog-content">
+        <div class="blog-category">AI + Robotics</div>
+        <div class="blog-title">Running Local LLMs on Ubuntu for Robotic Task Planning</div>
+        <div class="blog-excerpt">Experiments using Ollama as a local inference engine to generate motion sequences from natural language commands.</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </div>
+
+    <div class="blog-add" onclick="alert('Add your next article here — update the HTML!')">
+      <span>＋</span>
+      <span>Publish New Article</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Erakat</div>
+  <div>
+    <div class="footer-links">
+      <a href="https://github.com/Eraverse-22" target="_blank">github.com/Eraverse-22</a>
+      <a href="https://www.linkedin.com/in/mostafa-erakat-134b7a375/" target="_blank">linkedin.com/in/mostafa-erakat</a>
+      <a href="mailto:erakatmostafa22@gmail.com">erakatmostafa22@gmail.com</a>
+    </div>
+    <div class="footer-copy">© 2025 Mostafa Erakat — Built with intent.</div>
+  </div>
+</footer>
+
+<script>
+  // ── SCROLL FADE-IN ──
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  faders.forEach(el => observer.observe(el));
+
+  // ── SKILL BAR ANIMATION ──
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          setTimeout(() => bar.classList.add('animate'), 200);
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-group').forEach(g => barObserver.observe(g));
+
+  // ── COUNTER ANIMATION ──
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1200;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.innerHTML = Math.floor(eased * target) + '<span>' + suffix + '</span>';
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          animateCounter(document.getElementById('counter-projects'), 5, '+');
+          animateCounter(document.getElementById('counter-techs'), 14, '+');
+          animateCounter(document.getElementById('counter-years'), 3, 'yr');
+        }, 400);
+        heroObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  heroObserver.observe(document.getElementById('hero'));
+</script>
+
+</body>
+</html>
