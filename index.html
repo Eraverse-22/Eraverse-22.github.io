@@ -464,7 +464,6 @@
   .status-active { color: var(--accent2); border-color: var(--accent2); background: rgba(75,232,160,0.08); }
   .status-wip    { color: var(--accent);  border-color: var(--accent);  background: rgba(232,184,75,0.08); }
   .status-done   { color: var(--muted);   border-color: var(--muted);   background: transparent; }
-
   .project-body {
     padding: 24px;
   }
@@ -979,23 +978,30 @@
 
   <div class="projects-grid">
 
-    <!-- PROJECT 1 -->
-    <div class="project-card fade-in">
-      <div class="project-img-placeholder">
-        <div class="project-img-icon">🤖</div>
+    <!-- PROJECT 1 — Robotic Arm -->
+    <div class="project-card fade-in" onclick="window.open('https://github.com/Eraverse-22/Eraverse22-RoboticArm','_blank')" style="cursor:pointer;">
+      <div class="project-img-placeholder" style="position:relative;overflow:hidden;height:200px;background:#0a0d10;">
+        <img
+          src="https://raw.githubusercontent.com/Eraverse-22/Eraverse22-RoboticArm/main/IMG-20241225-WA0001.jpg"
+          alt="Robotic Arm"
+          style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.85;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        />
+        <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:40px;opacity:0.2;">🤖</div>
         <div class="project-img-overlay"></div>
       </div>
-      <div class="project-status status-wip">In Progress</div>
+      <div class="project-status status-done">Completed — Term 5</div>
       <div class="project-body">
-        <div class="project-category">Robotics / Simulation</div>
-        <div class="project-title">ROS2 Robotic Arm<br>Simulation</div>
-        <div class="project-desc">6-DOF robotic arm modeled in SolidWorks, exported to URDF, simulated in Gazebo with joint trajectory control and collision detection.</div>
+        <div class="project-category">Embedded Systems / Robotics</div>
+        <div class="project-title">Dummy Robotic<br>Arm</div>
+        <div class="project-desc">2-link Arduino-based robotic arm with FSM control logic, Bluetooth wireless input, and servo torque management. Built as a university project — my role covered electrical design, control logic, and servo integration.</div>
         <div class="project-tags">
-          <span class="tag">ROS2</span>
-          <span class="tag">URDF</span>
-          <span class="tag">Gazebo</span>
-          <span class="tag">Python</span>
-          <span class="tag">SolidWorks</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">C++</span>
+          <span class="tag">FSM</span>
+          <span class="tag">Bluetooth</span>
+          <span class="tag">Servo Control</span>
+          <span class="tag">HC-05</span>
         </div>
       </div>
     </div>
@@ -1250,13 +1256,13 @@
     <div class="footer-links">
       <a href="https://github.com/Eraverse-22" target="_blank">github.com/Eraverse-22</a>
       <a href="https://www.linkedin.com/in/mostafa-erakat-134b7a375/" target="_blank">linkedin.com/in/mostafa-erakat</a>
-      <a href="mailto:erakatmostafa22@gmail.com">erakatmostafa22@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#6f0a1d0e040e1b02001c1b0e090e5d5d2f08020e0603410c0002"><span class="__cf_email__" data-cfemail="c6a3b4a7ada7b2aba9b5b2a7a0a7f4f486a1aba7afaae8a5a9ab">[email&#160;protected]</span></a>
     </div>
     <div class="footer-copy">© 2025 Mostafa Erakat — Built with intent.</div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── SCROLL FADE-IN ──
   const faders = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
@@ -1304,15 +1310,4 @@
         setTimeout(() => {
           animateCounter(document.getElementById('counter-projects'), 5, '+');
           animateCounter(document.getElementById('counter-techs'), 14, '+');
-          animateCounter(document.getElementById('counter-years'), 3, 'yr');
-        }, 400);
-        heroObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  heroObserver.observe(document.getElementById('hero'));
-</script>
-
-</body>
-</html>
+       
